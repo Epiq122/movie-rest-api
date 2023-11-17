@@ -5,10 +5,9 @@ import ca.robertgleason.movie.models.Movie;
 import ca.robertgleason.movie.service.MovieService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +20,14 @@ public class MovieController {
 
     private final MovieService movieService;
 
+
+    @PostMapping
+    public ResponseEntity<Movie> saveNewMovie(@RequestBody Movie movie) {
+        log.debug("Save New Movie - in controller");
+
+        Movie savedMovie = movieService.saveNewMovie(movie);
+        return new ResponseEntity<>(savedMovie, HttpStatus.CREATED);
+    }
 
     @GetMapping()
     public List<Movie> listMovies() {

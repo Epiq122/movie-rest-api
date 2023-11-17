@@ -82,4 +82,23 @@ public class MovieServiceImpl implements MovieService {
         log.debug("Get Movie by Id - in service id: " + id.toString());
         return movieMap.get(id);
     }
+
+    @Override
+    public Movie saveNewMovie(Movie movie) {
+        Movie savedMovie = Movie.builder()
+                .id(UUID.randomUUID())
+                .title(movie.getTitle())
+                .director(movie.getDirector())
+                .genre(movie.getGenre())
+                .releaseDate(movie.getReleaseDate())
+                .runTime(movie.getRunTime())
+                .rating(movie.getRating())
+                .purchasePrice(movie.getPurchasePrice())
+                .quantityInStock(movie.getQuantityInStock())
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
+                .build();
+        return movieMap.put(savedMovie.getId(), savedMovie);
+    }
 }
+

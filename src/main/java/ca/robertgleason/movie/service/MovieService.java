@@ -10,4 +10,7 @@ public interface MovieService {
     List<Movie> listMovies();
 
     Movie getMovieById(UUID id);
+
+    Movie saveNewMovie(Movie movie);
+
 }
