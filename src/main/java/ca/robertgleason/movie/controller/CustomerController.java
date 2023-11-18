@@ -31,5 +31,10 @@ public class CustomerController {
 
     }
 
+    @PostMapping
+    public Customer saveNewCustomer(@RequestBody Customer customer) {
+        return customerService.saveNewCustomer(customer);
+    }
+
 
 }
