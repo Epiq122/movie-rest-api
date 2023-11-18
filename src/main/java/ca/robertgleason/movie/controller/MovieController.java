@@ -23,7 +23,7 @@ public class MovieController {
 
     @PostMapping
     public ResponseEntity<Movie> saveNewMovie(@RequestBody Movie movie) {
-        log.debug("Save New Movie - in controller");
+
 
         Movie savedMovie = movieService.saveNewMovie(movie);
         return new ResponseEntity<>(savedMovie, HttpStatus.CREATED);
@@ -31,7 +31,7 @@ public class MovieController {
 
     @GetMapping()
     public List<Movie> listMovies() {
-        log.debug("List Movies - in controller");
+
 
         return movieService.listMovies();
     }
@@ -39,7 +39,7 @@ public class MovieController {
 
     @GetMapping("{movieId}")
     public Movie getMovieById(@PathVariable("movieId") UUID movieId) {
-        log.debug("Get Movie by Id - in controller");
+
 
         return movieService.getMovieById(movieId);
 
