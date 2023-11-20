@@ -60,5 +60,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer getCustomerById(UUID id) {
         return customerMap.get(id);
+
+    }
+
+    @Override
+    public Customer saveNewCustomer(Customer customer) {
+        return null;
     }
 }
